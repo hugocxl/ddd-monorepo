@@ -12,6 +12,7 @@
   "scripts": {
     "storybook": "start-storybook -p 6006 -c .storybook --ci",
     "test": "",
+    "dev": "rollup -c -w",
     "build": "rollup -c",
     "build:storybook": "build-storybook",
     "clean": "rm -rf dist && rm -rf node_modules"

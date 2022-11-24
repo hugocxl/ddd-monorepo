@@ -4,7 +4,7 @@ import { MantineProvider } from '@mantine/core'
 import { TypographyStylesProvider } from '@mantine/core'
 
 // Contexts
-import { ThemeModeContext } from '@/contexts'
+import { ThemeModeContext } from '../../contexts'
 
 // Types
 import { FC, ReactNode } from 'react'

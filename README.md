@@ -2,7 +2,7 @@
 
 ## Install required
 
-* [Rush](https://rushstack.io/): Scalable monorepo build orchestrator
+* [Rush](https://rushjs.io/): Scalable monorepo build orchestrator
 * [pnPm](https://pnpm.io/): Dependencies package manager
 * [Vite](https://main.vitejs.dev): Modern frontend tooling with excellent performance
 * [NestJS](https://nestjs.com): Framework for backend app
@@ -10,7 +10,7 @@
 * [Next.js](https://nextjs.org/): Development framework for web app
 * [Capacitor](https://capacitorjs.com/): Native runtime for building mobile apps
 
-# CocoaPods
+## CocoaPods
 
 Cocoapods is an iOS dependency manager that Capacitor uses to install and manage native dependencies for your iOS project.
 brew install cocoapods
