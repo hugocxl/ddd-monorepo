@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/rush.schema.json",
+  "rushVersion": "5.85.0",
+  "pnpmVersion": "7.9.0",
+  "nodeSupportedVersionRange": ">=16.13.0",
+  "ensureConsistentVersions": true,
+  "telemetryEnabled": false,
+  "projects": [
+    {
+      "packageName": "@sygris/backend",
+      "projectFolder": "backend/app"
+    },
+    {
+      "packageName": "@sygris/desktop",
+      "projectFolder": "frontend/desktop"
+    },
+    {
+      "packageName": "@sygris/mobile",
+      "projectFolder": "frontend/mobile"
+    },
+    {
+      "packageName": "@sygris/ui",
+      "projectFolder": "packages/ui"
+    }
+  ]
+}
