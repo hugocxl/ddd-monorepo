@@ -1,28 +1,30 @@
 {
   "name": "@sygris/desktop",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "description": "Desktop client for @sygris app",
+  "license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "package": "yarn tauri build"
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "tauri": "tauri",
+    "lint": "next lint",
+    "package": "pnpm build && pnpm export && yarn tauri build",
+    "update:cargo": "cd src-tauri && cargo update"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@tauri-apps/api": "^1.1.0",
-    "@sygris/ui": "workspace:*"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.1.0",
+    "@tauri-apps/cli": "^1.2.0",
     "@types/node": "^18.11.9",
     "@types/react-dom": "^18.0.9",
     "@types/react": "^18.0.25",
-    "@vitejs/plugin-react": "^2.2.0",
-    "typescript": "^4.7.4",
-    "vite": "^3.2.3"
+    "eslint-config-next": "^13.0.5",
+    "eslint": "^8.19.0",
+    "next": "^13.0.5",
+    "typescript": "^4.7.4"
   }
 }
