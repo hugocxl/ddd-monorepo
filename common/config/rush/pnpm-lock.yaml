@@ -64,6 +64,7 @@ importers:
 
   ../../frontend/desktop:
     specifiers:
+      '@sygris/ui': workspace:*
       '@tauri-apps/api': ^1.1.0
       '@tauri-apps/cli': ^1.1.0
       '@types/node': ^18.11.9
@@ -75,6 +76,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.2.3
     dependencies:
+      '@sygris/ui': link:../../packages/ui
       '@tauri-apps/api': 1.2.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -93,6 +95,7 @@ importers:
       '@capacitor/cli': ^4.5.0
       '@capacitor/core': ^4.5.0
       '@capacitor/ios': ^4.5.0
+      '@sygris/ui': workspace:*
       '@types/react': ^18.0.25
       '@types/react-dom': ^18.0.9
       '@vitejs/plugin-react': ^2.2.0
@@ -101,6 +104,7 @@ importers:
       typescript: ^4.7.4
       vite: ^3.2.3
     dependencies:
+      '@sygris/ui': link:../../packages/ui
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:

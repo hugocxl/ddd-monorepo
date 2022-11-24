@@ -13,7 +13,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@tauri-apps/api": "^1.1.0"
+    "@tauri-apps/api": "^1.1.0",
+    "@sygris/ui": "workspace:*"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.1.0",
