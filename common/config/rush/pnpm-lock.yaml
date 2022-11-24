@@ -64,6 +64,7 @@ importers:
 
   ../../frontend/desktop:
     specifiers:
+      '@sygris/ui': workspace:*
       '@tauri-apps/cli': ^1.2.0
       '@types/node': ^18.11.9
       '@types/react': ^18.0.25
@@ -75,6 +76,7 @@ importers:
       react-dom: ^18.2.0
       typescript: ^4.7.4
     dependencies:
+      '@sygris/ui': link:../../packages/ui
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
