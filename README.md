@@ -52,7 +52,7 @@ rushx test # Run the tests
 
 ### Rush
 
-To install Rush, enter the following terminal:
+To install Rush, enter the following command in the terminal:
 
 ```bash
 npm install -g @microsoft/rush
@@ -60,10 +60,18 @@ npm install -g @microsoft/rush
 
 ### Pnpm
 
-To install Pnpm, enter the following terminal:
+To install Pnpm, enter the following command in the terminal:
 
 ```bash
 npm install -g pnpm
+```
+
+### Nest CLI
+
+To install Nest CLI, enter the following command in the terminal:
+
+```bash
+npm install -g @nestjs/cli
 ```
 
 ### CLang and macOS Development Dependencies
