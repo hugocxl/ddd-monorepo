@@ -21,6 +21,10 @@
     {
       "packageName": "@sygris/ui",
       "projectFolder": "packages/ui"
+    },
+    {
+      "packageName": "@sygris/core",
+      "projectFolder": "packages/sygris"
     }
   ]
 }
