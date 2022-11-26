@@ -2,24 +2,20 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 // Controller
-import { UserLoginController } from './userLogin.controller';
+import { CreateUserController } from './createUser.controller';
 
-// Service
-import { UserLoginService } from '../service/users.service';
-
-describe('UserLoginController', () => {
+describe('CreateUserController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      controllers: [UserLoginController],
-      providers: [UserLoginService],
+      controllers: [CreateUserController],
     }).compile();
   });
 
   describe('getHello', () => {
     it('should return "Hello World!"', () => {
-      const appController = app.get(UserLoginController);
+      const appController = app.get(CreateUserController);
       expect(appController.getHello()).toBe('Hello World!');
     });
   });

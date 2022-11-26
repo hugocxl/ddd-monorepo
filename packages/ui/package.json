@@ -52,7 +52,6 @@
     "@types/react": "^18.0.25",
     "esbuild": "^0.14.43",
     "prettier": "^2.8.0",
-    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-esbuild": "^4.9.1",
     "rollup": "^2.75.6",
