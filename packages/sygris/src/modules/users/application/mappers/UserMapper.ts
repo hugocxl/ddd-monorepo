@@ -1,12 +1,18 @@
 import { Adapter } from '../../../../shared/infra/Adapter';
-import { User } from '../../domain';
-import { UserDTO } from '../DTOs';
+import { User, UserEmail, UserToken } from '../../domain';
+import { UserAuthDTO, UserDTO } from '../DTOs';
 
 export class UserMapper implements Adapter<User> {
   public static toDTO(user: User): UserDTO {
     return {
       email: user.email,
-      id: user.id,
+    };
+  }
+
+  public static toAuthDTO(email: UserEmail, token: UserToken): UserAuthDTO {
+    return {
+      email,
+      token,
     };
   }
 

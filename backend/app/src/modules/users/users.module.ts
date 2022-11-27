@@ -2,9 +2,9 @@
 import { Module } from '@nestjs/common';
 
 // Modules
-import { UserSignUpModule } from './useCases';
+import { UserSignInModule, UserSignUpModule } from './useCases';
 
 @Module({
-  imports: [UserSignUpModule],
+  imports: [UserSignUpModule, UserSignInModule],
 })
 export class UsersModule {}

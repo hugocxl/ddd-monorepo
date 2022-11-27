@@ -1,6 +1,6 @@
 import { UserEmail, UserPassword } from '../../../domain';
 
-export interface UserSignUpDTO {
+export interface UserSignInDTO {
   email: UserEmail;
   password: UserPassword;
 }

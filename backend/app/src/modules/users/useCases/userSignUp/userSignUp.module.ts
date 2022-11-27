@@ -2,7 +2,7 @@
 import { Module } from '@nestjs/common';
 
 // Controller
-import { UserSignUpController } from './controller';
+import { UserSignUpController } from './userSignUp.controller';
 
 @Module({
   imports: [],

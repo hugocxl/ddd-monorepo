@@ -1,9 +1,8 @@
-import { Result } from '../../../shared';
-import { User, UserEmail, UserPassword } from '../domain';
+import { Adapter, Result, SwaggerService } from '../../../shared';
+import { User, UserToken } from '../domain';
+import { UserSignInDTO, UserSignUpDTO } from './useCases';
 
-export interface SwaggerService {
-  userSignUp: (
-    email: UserEmail,
-    password: UserPassword,
-  ) => Promise<Result<User>>;
+export interface SwaggerAdapter extends Adapter<SwaggerService> {
+  userSignUp: (req: UserSignUpDTO) => Promise<Result<User>>;
+  userSignIn: (req: UserSignInDTO) => Promise<Result<UserToken>>;
 }

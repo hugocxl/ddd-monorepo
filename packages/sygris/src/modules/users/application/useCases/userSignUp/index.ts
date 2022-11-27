@@ -1,8 +1,7 @@
 import { SwaggerService } from '../../../../../shared';
 import { UserSignUp } from './UserSignUp';
 
-const swaggerService = new SwaggerService();
-const userSignUp = new UserSignUp(swaggerService);
+const userSignUp = new UserSignUp(SwaggerService);
 
 export { userSignUp, UserSignUp };
 

@@ -1,5 +1,5 @@
 import { UseCase, AppError, Result } from '../../../../../shared';
-import { SwaggerService } from '../../ports';
+import { SwaggerAdapter } from '../../ports';
 import { UserSignUpDTO } from './UserSignUpDTO';
 import { UserSignUpErrors } from './UserSignUpError';
 import { UserSignUpResponse } from './UserSignUpReponse';
@@ -7,10 +7,10 @@ import { UserSignUpResponse } from './UserSignUpReponse';
 export class UserSignUp
   implements UseCase<UserSignUpDTO, Promise<Result<UserSignUpResponse>>>
 {
-  private swaggerService: SwaggerService;
+  private swagger: SwaggerAdapter;
 
-  constructor(swaggerService: SwaggerService) {
-    this.swaggerService = swaggerService;
+  constructor(swagger: SwaggerAdapter) {
+    this.swagger = swagger;
   }
 
   async execute(request: UserSignUpDTO): Promise<Result<UserSignUpResponse>> {
@@ -29,10 +29,7 @@ export class UserSignUp
         );
       }
 
-      const userResult = await this.swaggerService.userSignUp(
-        request.email,
-        request.password,
-      );
+      const userResult = await this.swagger.userSignUp(request);
 
       if (userResult.isFailure) {
         return Result.fail(

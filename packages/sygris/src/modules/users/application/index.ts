@@ -1,7 +1,7 @@
 import { UserService } from './UserService';
-import { userSignUp } from './useCases';
+import { userSignUp, userSignIn } from './useCases';
 
-const userService = new UserService(userSignUp);
+const userService = new UserService(userSignUp, userSignIn);
 
 export { userService, UserService };
 
