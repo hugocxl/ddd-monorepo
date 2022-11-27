@@ -1,8 +1,9 @@
+import { Result } from '../../../shared';
 import { User, UserEmail, UserPassword } from '../domain';
 
 export interface SwaggerService {
-  createUser: (
+  userSignUp: (
     email: UserEmail,
     password: UserPassword,
-  ) => Promise<User | null>;
+  ) => Promise<Result<User>>;
 }

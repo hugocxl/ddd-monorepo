@@ -1,3 +1,2 @@
-export * from './domain'
-export * from './application/dtos'
-export * from './application'
+export * from './domain';
+export * from './application';

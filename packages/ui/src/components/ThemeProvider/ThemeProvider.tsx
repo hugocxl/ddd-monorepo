@@ -36,7 +36,7 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          primaryColor: isDarkMode ? 'yellow' : 'yellow',
+          primaryColor: isDarkMode ? 'indigo' : 'indigo',
           colorScheme: mode,
           black: '#333',
           white: '#fff',

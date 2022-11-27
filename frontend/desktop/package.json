@@ -11,9 +11,10 @@
     "package": "yarn tauri build"
   },
   "dependencies": {
+    "@sygris/core": "workspace:*",
     "@sygris/ui": "workspace:*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.2.0",

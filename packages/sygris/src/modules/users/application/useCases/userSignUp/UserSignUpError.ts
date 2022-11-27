@@ -1,6 +1,6 @@
-import { Error } from '../../../../shared';
+import { Error } from '../../../../../shared';
 
-export namespace CreateUserErrors {
+export namespace UserSignUpErrors {
   export class EmailError extends Error {
     constructor(email: unknown) {
       super(`There was an error with the email: ${email}`);

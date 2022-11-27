@@ -2,14 +2,14 @@
   "name": "@sygris/core",
   "version": "0.0.1",
   "license": "ISC",
-  "main": "dist/main.js",
-  "module": "dist/module.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "source": "src/index.ts",
-  "types": "dist/types.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "rollup -c -w",
-    "serve": "rollup -c",
-    "build": "rollup -c",
+    "serve": "rushx build && node dist/index.js",
+    "build": "rollup -c --silent",
     "test": ""
   },
   "devDependencies": {

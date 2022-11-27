@@ -1,18 +1,23 @@
-import { SwaggerService } from '../../../shared';
 import { User } from '../domain';
-import { CreateUser } from './createUser';
-import { UserDTO } from './dtos';
+import { UserSignUp, UserSignUpResponse } from './useCases';
+import { UserDTO } from './DTOs';
 import { UserMapper } from './mappers';
+import { Result } from '../../../shared';
 
 export class UserService {
-  constructor(private readonly createUser: CreateUser) {
-    this.createUser = new CreateUser(SwaggerService);
+  constructor(private readonly userSignUp: UserSignUp) {
+    this.userSignUp = userSignUp;
   }
 
-  async create(req): Promise<UserDTO> {
-    const user: User = await this.createUser.execute(req);
+  async signup(req): Promise<UserDTO | UserSignUpResponse> {
+    const userOrError: Result<UserSignUpResponse> =
+      await this.userSignUp.execute(req);
 
-    const userDTO = UserMapper.toDTO(user);
+    if (userOrError.isFailure) {
+      return userOrError.getError() as UserSignUpResponse;
+    }
+
+    const userDTO = UserMapper.toDTO(userOrError.getValue() as User);
 
     return userDTO;
   }

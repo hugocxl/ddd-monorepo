@@ -1,6 +1,6 @@
 import { Adapter } from '../../../../shared/infra/Adapter';
 import { User } from '../../domain';
-import { UserDTO } from '../dtos';
+import { UserDTO } from '../DTOs';
 
 export class UserMapper implements Adapter<User> {
   public static toDTO(user: User): UserDTO {

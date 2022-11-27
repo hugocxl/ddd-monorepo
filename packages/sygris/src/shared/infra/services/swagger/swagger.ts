@@ -1,13 +1,16 @@
 import fetch from 'cross-fetch';
 import { User, UserEmail, UserPassword } from '../../../../modules';
+import { Result } from '../../../core';
 
 const BASE_URL = 'http://20.31.205.253';
 
-export const SwaggerService = {
-  createUser: async (
+export class SwaggerService {
+  constructor() {}
+
+  userSignUp = async (
     email: UserEmail,
     password: UserPassword,
-  ): Promise<User | null> => {
+  ): Promise<Result<User>> => {
     try {
       const response = await fetch(`${BASE_URL}/api/v1/user`, {
         method: 'POST',
@@ -17,9 +20,19 @@ export const SwaggerService = {
         },
       });
 
-      return await response.json();
+      const json = await response.json();
+
+      if (!json.id) {
+        return Result.fail<User>(
+          `[Swagger: userSignUp]: Error when signin up in Swagger: ${json.message}`,
+        );
+      }
+
+      return Result.ok<User>(json);
     } catch (err) {
-      return null;
+      return Result.fail<User>(
+        `[Swagger: userSignUp]: Error when signin up in Swagger: ${err}`,
+      );
     }
-  },
-};
+  };
+}

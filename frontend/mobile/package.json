@@ -13,7 +13,6 @@
     "start:ios": "pnpm build && npx cap copy && npx cap open ios"
   },
   "dependencies": {
-    "@sygris/ui": "workspace:*",
     "react-dom": "^18.2.0",
     "react": "^18.2.0"
   },

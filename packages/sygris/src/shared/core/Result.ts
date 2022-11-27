@@ -1,10 +1,10 @@
 export class Result<T> {
   public isSuccess: boolean;
   public isFailure: boolean;
-  private error: string;
-  private _value: T;
+  private error: T | string;
+  private value: T;
 
-  public constructor(isSuccess: boolean, value: T, error: string) {
+  public constructor(isSuccess: boolean, value: T, error: string | T) {
     if (isSuccess && error) {
       throw new Error(
         'InvalidOperation: A result cannot be successful and contain an error',
@@ -19,7 +19,7 @@ export class Result<T> {
     this.isSuccess = isSuccess;
     this.isFailure = !isSuccess;
     this.error = error;
-    this._value = value;
+    this.value = value;
 
     Object.freeze(this);
   }
@@ -32,12 +32,12 @@ export class Result<T> {
       );
     }
 
-    return this._value;
+    return this.value;
   }
 
-  public getError(): string {
+  public getError(): T | string {
     if (this.isSuccess) {
-      console.log(this._value);
+      console.log(this.value);
       throw new Error(
         "Can't get the error of a success result. Use 'getValue' instead.",
       );
@@ -49,56 +49,7 @@ export class Result<T> {
     return new Result<U>(true, value as U, '');
   }
 
-  public static fail<U>(error: string): Result<U> {
+  public static fail<U>(error: U | string): Result<U> {
     return new Result<U>(false, null as any, error);
   }
-
-  // public static combine(results: Result<any>[]): Result<any> {
-  //   for (let result of results) {
-  //     if (result.isFailure) return result
-  //   }
-  //   return Result.ok()
-  // }
 }
-
-export type Either<L, A> = Left<L, A> | Right<L, A>;
-
-export class Left<L, A> {
-  readonly value: L;
-
-  constructor(value: L) {
-    this.value = value;
-  }
-
-  isLeft(): this is Left<L, A> {
-    return true;
-  }
-
-  isRight(): this is Right<L, A> {
-    return false;
-  }
-}
-
-export class Right<L, A> {
-  readonly value: A;
-
-  constructor(value: A) {
-    this.value = value;
-  }
-
-  isLeft(): this is Left<L, A> {
-    return false;
-  }
-
-  isRight(): this is Right<L, A> {
-    return true;
-  }
-}
-
-export const left = <L, A>(l: L): Either<L, A> => {
-  return new Left(l);
-};
-
-export const right = <L, A>(a: A): Either<L, A> => {
-  return new Right<L, A>(a);
-};
