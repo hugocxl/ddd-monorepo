@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nest start --debug --watch",
-    "serve": "pnpm build && node dist/main",
+    "serve": "rushx build && node dist/main",
     "build": "nest build",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -20,9 +20,9 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@sygris/core": "workspace:*",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.5.5",
-    "@sygris/core": "workspace:*"
+    "rxjs": "^7.5.5"
   },
   "devDependencies": {
     "@nestjs/schematics": "^9.0.0",

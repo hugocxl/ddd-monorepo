@@ -8,9 +8,9 @@
     "serve": "vite preview",
     "build": "tsc && vite build",
     "test": "",
-    "setup": "pnpm build && npx cap add ios && npx cap add android",
-    "start:android": "pnpm build && npx cap copy && npx cap open android",
-    "start:ios": "pnpm build && npx cap copy && npx cap open ios"
+    "setup": "rushx build && npx cap add ios && npx cap add android",
+    "start:android": "rushx build && npx cap copy && npx cap open android",
+    "start:ios": "rushx build && npx cap copy && npx cap open ios"
   },
   "dependencies": {
     "react-dom": "^18.2.0",

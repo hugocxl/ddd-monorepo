@@ -23,24 +23,24 @@
     "@mantine/hooks": "^5.8.3",
     "@mantine/next": "^5.7.2",
     "@mantine/styles": "^5.8.3",
+    "@sygris/core": "workspace:*",
     "@tabler/icons": "^1.113.0",
     "esbuild": "^0.15.15",
     "next": "^13.0.5",
     "react-dom": "^18.2.0",
     "react": "^18.2.0",
     "rxjs": "^7.5.5",
-    "valtio": "~1.7.6",
-    "@sygris/core": "workspace:*"
+    "valtio": "~1.7.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
-    "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "@types/react": "^18.0.25",
     "prettier": "^2.8.0",
-    "rollup": "^2.75.6",
     "rollup-plugin-dts": "^4.2.2",
     "rollup-plugin-esbuild": "^4.9.1",
     "rollup-plugin-svg": "^2.0.0",
+    "rollup": "^2.75.6",
     "typescript": "^4.7.4"
   }
 }

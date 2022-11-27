@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "serve": "pnpm build && next start",
+    "serve": "rushx build && next start",
     "build": "next build && next export",
     "test": "",
     "package": "yarn tauri build"
