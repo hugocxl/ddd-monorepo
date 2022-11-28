@@ -1,10 +1,21 @@
 import { Nodes } from '../domain';
 import { Result } from '../../../shared';
-import { GetNodes, GetNodesRequest, GetNodesResponse } from './useCases';
+import {
+  CreateNode,
+  CreateNodeRequest,
+  CreateNodeResponse,
+  GetNodes,
+  GetNodesRequest,
+  GetNodesResponse,
+} from './useCases';
 
 export class NodesService {
-  constructor(private readonly getNodes: GetNodes) {
+  constructor(
+    private readonly getNodes: GetNodes,
+    private readonly createNode: CreateNode,
+  ) {
     this.getNodes = getNodes;
+    this.createNode = createNode;
   }
 
   async getAll(req: GetNodesRequest): Promise<Nodes | GetNodesResponse> {
@@ -17,5 +28,16 @@ export class NodesService {
     }
 
     return nodesOrError.getValue();
+  }
+
+  async createNew(req: CreateNodeRequest): Promise<CreateNodeResponse> {
+    const nodeOrError: Result<CreateNodeResponse> =
+      await this.createNode.execute(req);
+
+    if (nodeOrError.isFailure) {
+      return nodeOrError.getError() as CreateNodeResponse;
+    }
+
+    return nodeOrError.getValue();
   }
 }

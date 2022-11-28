@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import {
+  CreateNodeRequest,
   GetNodesRequest,
   Nodes,
   User,
@@ -87,6 +88,36 @@ export class SwaggerService {
     } catch (err) {
       return Result.fail<Nodes>(
         `[Swagger: userSignUp]: Error when getting nodes in Swagger: ${err}`,
+      );
+    }
+  }
+
+  public static async createNode({
+    token,
+    ...req
+  }: CreateNodeRequest): Promise<Result<Node>> {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/node`, {
+        method: 'POST',
+        body: JSON.stringify(req),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const json = await response.json();
+
+      if (!json.id) {
+        return Result.fail<Node>(
+          `[Swagger: userSignUp]: Error when creating node in Swagger: ${json.message}`,
+        );
+      }
+
+      return Result.ok<Node>(json);
+    } catch (err) {
+      return Result.fail<Node>(
+        `[Swagger: userSignUp]: Error when creating node in Swagger: ${err}`,
       );
     }
   }

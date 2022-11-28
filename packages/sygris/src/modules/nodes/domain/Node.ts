@@ -1,4 +1,7 @@
+import { NodeName } from './NodeName';
+import { NodeParentId } from './NodeParentId';
+
 export interface Node {
-  name: string;
-  parentId?: number;
+  name: NodeName;
+  parentId?: NodeParentId;
 }

@@ -9,7 +9,7 @@ import {
 } from '../../../../../shared';
 
 export class GetNodes
-  implements UseCase<undefined, Promise<Result<GetNodesResponse>>>
+  implements UseCase<GetNodesRequest, Promise<Result<GetNodesResponse>>>
 {
   private swagger: SwaggerAdapter;
 

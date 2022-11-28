@@ -2,9 +2,9 @@
 import { Module } from '@nestjs/common';
 
 // Modules
-import { GetNodesModule } from './useCases';
+import { GetNodesModule, CreateNodeModule } from './useCases';
 
 @Module({
-  imports: [GetNodesModule],
+  imports: [GetNodesModule, CreateNodeModule],
 })
 export class NodesModule {}

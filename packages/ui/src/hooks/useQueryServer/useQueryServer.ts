@@ -3,15 +3,7 @@ import { useAuth } from '../useAuth'
 import { useQuery } from 'react-query'
 import { SERVER_STATE } from './serverState'
 
-// Known issue: we can access the methods from queryKey and queryFn
-// as they are based on the object prototype
-type NestedKeyOf<ObjectType> = {
-  [Key in keyof ObjectType & (string | number)]: ObjectType[Key] extends object
-    ? `${Key}` | `${Key}.${NestedKeyOf<ObjectType[Key]>}`
-    : `${Key}`
-}[keyof ObjectType & (string | number)]
-
-export const useServer = <S>(
+export const useQueryServer = <S>(
   queryId: string & NestedKeyOf<typeof SERVER_STATE>,
   args: any = {}
 ) => {
@@ -19,7 +11,7 @@ export const useServer = <S>(
   const [module, section] = queryId.split('.')
   const query = SERVER_STATE[module][section]
 
-  return useQuery<S, string>(query.queryKey, async () => {
+  return useQuery<S, Error>(query.queryKey, async () => {
     if (isLogged) {
       const result = await query.queryFn<S>({ token: user.token, ...args })
 

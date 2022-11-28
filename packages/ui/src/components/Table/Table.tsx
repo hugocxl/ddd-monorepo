@@ -1,7 +1,7 @@
 import { Table as MnTable } from '@mantine/core'
 
 export interface TableProps {
-  data: any[]
+  data: any[] | undefined
   columns: {
     header: string
     key: string
