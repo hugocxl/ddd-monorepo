@@ -11,6 +11,6 @@ import {
 export class GetNodesController {
   @Post()
   getNodes(@Body() req: GetNodesRequest): Promise<Nodes | GetNodesResponse> {
-    return nodesService.getAll(req);
+    return nodesService.get(req);
   }
 }

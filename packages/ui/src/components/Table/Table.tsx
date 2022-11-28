@@ -10,10 +10,12 @@ export interface TableProps {
 }
 
 export function Table({ data = [], columns = [], onClickRow }: TableProps) {
-  const headers = columns.map((column) => <th>{column.header}</th>)
+  const headers = columns.map((column) => (
+    <th key={column.header}>{column.header}</th>
+  ))
   const rows = data.map((item) => (
     <tr
-      key={item.name}
+      key={JSON.stringify(item)}
       onClick={() => {
         onClickRow(item)
       }}

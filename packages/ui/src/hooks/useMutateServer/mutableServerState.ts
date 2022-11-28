@@ -26,5 +26,16 @@ export const MUTABLE_SERVER_STATE = {
           },
         }),
     },
+    edit: {
+      mutationKey: ['nodes'],
+      mutationFn: <S>(req: DeleteNodeRequest) =>
+        fetcher<S>(`${BASE_API}/nodes/edit`, {
+          method: 'POST',
+          body: JSON.stringify(req),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }),
+    },
   },
 }

@@ -2,6 +2,7 @@ import fetch from 'cross-fetch';
 import {
   CreateNodeRequest,
   DeleteNodeRequest,
+  EditNodeRequest,
   GetNodesRequest,
   Nodes,
   User,
@@ -140,6 +141,37 @@ export class SwaggerService {
     } catch (err) {
       return Result.fail<void>(
         `[Swagger: userSignUp]: Error when creating node in Swagger: ${err}`,
+      );
+    }
+  }
+
+  public static async editNode({
+    token,
+    id,
+    ...req
+  }: EditNodeRequest): Promise<Result<Node>> {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/node/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(req),
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const json = await response.json();
+
+      if (!json.id) {
+        return Result.fail<Node>(
+          `[Swagger: userSignUp]: Error when editing node in Swagger: ${json.message}`,
+        );
+      }
+
+      return Result.ok<Node>(json);
+    } catch (err) {
+      return Result.fail<Node>(
+        `[Swagger: userSignUp]: Error when editing node in Swagger: ${err}`,
       );
     }
   }

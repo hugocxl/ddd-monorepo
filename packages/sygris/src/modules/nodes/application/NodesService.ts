@@ -7,6 +7,9 @@ import {
   DeleteNode,
   DeleteNodeRequest,
   DeleteNodeResponse,
+  EditNode,
+  EditNodeRequest,
+  EditNodeResponse,
   GetNodes,
   GetNodesRequest,
   GetNodesResponse,
@@ -17,13 +20,15 @@ export class NodesService {
     private readonly getNodes: GetNodes,
     private readonly createNode: CreateNode,
     private readonly deleteNode: DeleteNode,
+    private readonly editNode: EditNode,
   ) {
     this.getNodes = getNodes;
     this.createNode = createNode;
     this.deleteNode = deleteNode;
+    this.editNode = editNode;
   }
 
-  async getAll(req: GetNodesRequest): Promise<Nodes | GetNodesResponse> {
+  async get(req: GetNodesRequest): Promise<Nodes | GetNodesResponse> {
     const nodesOrError: Result<GetNodesResponse> = await this.getNodes.execute(
       req,
     );
@@ -55,5 +60,17 @@ export class NodesService {
     }
 
     return;
+  }
+
+  async edit(req: EditNodeRequest): Promise<EditNodeResponse> {
+    const nodeOrError: Result<EditNodeResponse> = await this.editNode.execute(
+      req,
+    );
+
+    if (nodeOrError.isFailure) {
+      return nodeOrError.getError() as EditNodeResponse;
+    }
+
+    return nodeOrError.getValue();
   }
 }

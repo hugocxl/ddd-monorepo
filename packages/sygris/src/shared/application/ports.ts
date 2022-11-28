@@ -3,6 +3,7 @@ import { Result } from '../core';
 import {
   CreateNodeRequest,
   DeleteNodeRequest,
+  EditNodeRequest,
   GetNodesRequest,
   Nodes,
 } from '../../modules';
@@ -19,4 +20,5 @@ export interface SwaggerAdapter extends Adapter<SwaggerService> {
   getNodes: (req: GetNodesRequest) => Promise<Result<Nodes>>;
   createNode: (req: CreateNodeRequest) => Promise<Result<Node>>;
   deleteNode: (req: DeleteNodeRequest) => Promise<Result<void>>;
+  editNode: (req: EditNodeRequest) => Promise<Result<Node>>;
 }

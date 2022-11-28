@@ -14,6 +14,12 @@ interface CreateNodeArgs {
   parentId: NodeParentID
 }
 
+interface EditNodeArgs {
+  id: NodeID
+  name: NodeName
+  parentId: NodeParentID
+}
+
 interface DeleteNodeArgs {
   id: NodeID
 }
@@ -26,8 +32,9 @@ const Home: NextPage = () => {
   const { mutate: deleteNode } = useMutateServer<DeleteNodeArgs, Node>(
     'nodes.delete'
   )
+  const { mutate: editNode } = useMutateServer<EditNodeArgs, Node>('nodes.edit')
 
-  function onClick() {
+  function onAdd() {
     const random = (Math.random() * 1000).toFixed(0)
     createNode({ name: `Node: ${random}`, parentId: Number(random) })
   }
@@ -36,14 +43,23 @@ const Home: NextPage = () => {
     deleteNode({ id: node.id })
   }
 
+  function onEdit(node: Node) {
+    const random = (Math.random() * 1000).toFixed(0)
+    editNode({
+      id: node.id,
+      name: `Node: ${random}`,
+      parentId: Number(random),
+    })
+  }
+
   return (
     <SimpleGrid cols={1} sx={{ gridTemplateRows: 'auto 1fr' }}>
       <Title>Nodes</Title>
-      <Button onClick={onClick} variant='subtle'>
+      <Button onClick={onAdd} variant='subtle'>
         add new
       </Button>
       <Table
-        onClickRow={onDelete}
+        onClickRow={onEdit}
         data={data}
         columns={[
           { header: 'ID', key: 'id' },
