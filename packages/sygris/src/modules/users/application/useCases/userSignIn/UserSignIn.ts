@@ -1,8 +1,12 @@
-import { UseCase, AppError, Result } from '../../../../../shared';
-import { SwaggerAdapter } from '../../ports';
 import { UserSignInDTO } from './UserSignInDTO';
 import { UserSignInErrors } from './UserSignInError';
 import { UserSignInResponse } from './UserSignInReponse';
+import {
+  UseCase,
+  AppError,
+  Result,
+  SwaggerAdapter,
+} from '../../../../../shared';
 
 export class UserSignIn
   implements UseCase<UserSignInDTO, Promise<Result<UserSignInResponse>>>

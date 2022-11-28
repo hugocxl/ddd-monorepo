@@ -1,4 +1,4 @@
-import { AppShell, ThemeProvider, useAuth } from '@sygris/ui'
+import { AppShell, SygrisProvider, useAuth } from '@sygris/ui'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -14,10 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [isLogged, router])
 
   return (
-    <ThemeProvider>
+    <SygrisProvider>
       <AppShell>
         <Component {...pageProps} />
       </AppShell>
-    </ThemeProvider>
+    </SygrisProvider>
   )
 }

@@ -1,3 +1,3 @@
-export default function Home() {
-  return <div>home</div>
-}
+import { Home } from '../core'
+
+export default Home

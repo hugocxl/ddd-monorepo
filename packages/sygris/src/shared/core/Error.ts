@@ -3,5 +3,7 @@ export abstract class Error {
 
   constructor(message: string) {
     this.message = message;
+    console.error(`[Error]: An unexpected error occurred`);
+    console.error(message);
   }
 }
