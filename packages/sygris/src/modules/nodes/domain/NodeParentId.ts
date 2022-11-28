@@ -1,1 +1,1 @@
-export type NodeParentId = number;
+export type NodeParentID = number;

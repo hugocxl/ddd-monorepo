@@ -1,4 +1,4 @@
-import { CreateNodeErrors } from './CreateNodeError';
+import { CreateNodeErrors } from './CreateNodeErrors';
 import { CreateNodeResponse } from './CreateNodeReponse';
 import { CreateNodeRequest } from './CreateNodeRequest';
 import {

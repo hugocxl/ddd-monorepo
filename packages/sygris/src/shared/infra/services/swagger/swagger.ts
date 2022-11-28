@@ -1,6 +1,7 @@
 import fetch from 'cross-fetch';
 import {
   CreateNodeRequest,
+  DeleteNodeRequest,
   GetNodesRequest,
   Nodes,
   User,
@@ -117,6 +118,27 @@ export class SwaggerService {
       return Result.ok<Node>(json);
     } catch (err) {
       return Result.fail<Node>(
+        `[Swagger: userSignUp]: Error when creating node in Swagger: ${err}`,
+      );
+    }
+  }
+
+  public static async deleteNode({
+    token,
+    id,
+  }: DeleteNodeRequest): Promise<Result<void>> {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/node/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return Result.ok<void>(null);
+    } catch (err) {
+      return Result.fail<void>(
         `[Swagger: userSignUp]: Error when creating node in Swagger: ${err}`,
       );
     }

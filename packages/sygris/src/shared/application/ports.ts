@@ -1,6 +1,11 @@
 import { Adapter, SwaggerService } from '../infra';
 import { Result } from '../core';
-import { CreateNodeRequest, GetNodesRequest, Nodes } from '../../modules';
+import {
+  CreateNodeRequest,
+  DeleteNodeRequest,
+  GetNodesRequest,
+  Nodes,
+} from '../../modules';
 import {
   User,
   UserSignInDTO,
@@ -13,4 +18,5 @@ export interface SwaggerAdapter extends Adapter<SwaggerService> {
   userSignIn: (req: UserSignInDTO) => Promise<Result<UserToken>>;
   getNodes: (req: GetNodesRequest) => Promise<Result<Nodes>>;
   createNode: (req: CreateNodeRequest) => Promise<Result<Node>>;
+  deleteNode: (req: DeleteNodeRequest) => Promise<Result<void>>;
 }

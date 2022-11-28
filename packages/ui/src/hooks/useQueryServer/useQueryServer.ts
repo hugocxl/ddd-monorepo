@@ -10,8 +10,7 @@ export const useQueryServer = <S>(
   const [{ isLogged, user }] = useAuth()
   const [module, section] = queryId.split('.')
   const query = SERVER_STATE[module][section]
-
-  return useQuery<S, Error>(query.queryKey, async () => {
+  const serverFn = async () => {
     if (isLogged) {
       const result = await query.queryFn<S>({ token: user.token, ...args })
 
@@ -21,5 +20,7 @@ export const useQueryServer = <S>(
 
       return result
     }
-  })
+  }
+
+  return useQuery<S, Error>(query.queryKey, serverFn)
 }

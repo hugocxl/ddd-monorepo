@@ -1,4 +1,3 @@
-// Dependencies
 import { useAuth } from '../useAuth'
 import { useMutation, useQueryClient } from 'react-query'
 import { MUTABLE_SERVER_STATE } from './mutableServerState'
@@ -6,8 +5,8 @@ import { MUTABLE_SERVER_STATE } from './mutableServerState'
 export const useMutateServer = <T, S>(
   mutationId: string & NestedKeyOf<typeof MUTABLE_SERVER_STATE>
 ) => {
-  const [{ user }] = useAuth()
   const queryClient = useQueryClient()
+  const [{ user }] = useAuth()
   const [module, section] = mutationId.split('.')
   const { mutationFn, mutationKey } = MUTABLE_SERVER_STATE[module][section]
   const serverFn = async (variables) => {
@@ -24,8 +23,9 @@ export const useMutateServer = <T, S>(
   }
 
   return useMutation<S, Error, T>(serverFn, {
+    mutationKey: mutationKey,
     onSuccess: async () => {
-      // Queries cache auto-invalidation with the same key
+      console.log('onSuccess ASDJFAKLSÑDFJKADSLÑKFJKASDJDAFJL')
       for (const key of mutationKey) {
         queryClient.invalidateQueries(key)
       }

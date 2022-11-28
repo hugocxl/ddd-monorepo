@@ -1,6 +1,6 @@
 import { AppError } from '../../../../../shared';
 import { Node } from '../../../domain';
-import { CreateNodeErrors } from './CreateNodeError';
+import { CreateNodeErrors } from './CreateNodeErrors';
 
 export type CreateNodeResponse =
   | Node

@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { NodeName, NodeParentId, Nodes } from '@sygris/core'
+import { NodeID, NodeName, NodeParentID, Nodes, Node } from '@sygris/core'
 import {
   Button,
   SimpleGrid,
@@ -9,20 +9,31 @@ import {
   useQueryServer,
 } from '@sygris/ui'
 
-interface MutationArgs {
+interface CreateNodeArgs {
   name: NodeName
-  parentId: NodeParentId
+  parentId: NodeParentID
+}
+
+interface DeleteNodeArgs {
+  id: NodeID
 }
 
 const Home: NextPage = () => {
   const { data } = useQueryServer<Nodes>('nodes.all')
-  const { mutate, isLoading, error } = useMutateServer<MutationArgs, Node>(
+  const { mutate: createNode } = useMutateServer<CreateNodeArgs, Node>(
     'nodes.create'
+  )
+  const { mutate: deleteNode } = useMutateServer<DeleteNodeArgs, Node>(
+    'nodes.delete'
   )
 
   function onClick() {
     const random = (Math.random() * 1000).toFixed(0)
-    mutate({ name: `Node: ${random}`, parentId: Number(random) })
+    createNode({ name: `Node: ${random}`, parentId: Number(random) })
+  }
+
+  function onDelete(node: Node) {
+    deleteNode({ id: node.id })
   }
 
   return (
@@ -32,7 +43,8 @@ const Home: NextPage = () => {
         add new
       </Button>
       <Table
-        data={data as any[]}
+        onClickRow={onDelete}
+        data={data}
         columns={[
           { header: 'ID', key: 'id' },
           { header: 'Name', key: 'name' },

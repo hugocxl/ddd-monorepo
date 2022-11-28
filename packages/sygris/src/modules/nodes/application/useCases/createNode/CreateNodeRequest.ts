@@ -1,8 +1,8 @@
 import { UserToken } from '../../../../users';
-import { NodeName, NodeParentId } from '../../../domain';
+import { NodeName, NodeParentID } from '../../../domain';
 
 export interface CreateNodeRequest {
   name: NodeName;
-  parentId: NodeParentId;
+  parentId: NodeParentID;
   token: UserToken;
 }

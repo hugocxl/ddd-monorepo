@@ -2,7 +2,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import {
   CreateNodeResponse,
-  Nodes,
   nodesService,
   CreateNodeRequest,
 } from '@sygris/core';
@@ -10,9 +9,7 @@ import {
 @Controller('nodes/create')
 export class CreateNodeController {
   @Post()
-  getNodes(
-    @Body() req: CreateNodeRequest,
-  ): Promise<Nodes | CreateNodeResponse> {
-    return nodesService.createNew(req);
+  getNodes(@Body() req: CreateNodeRequest): Promise<CreateNodeResponse> {
+    return nodesService.create(req);
   }
 }

@@ -1,6 +1,7 @@
 import { Table as MnTable } from '@mantine/core'
 
 export interface TableProps {
+  onClickRow?: (row: any) => void
   data: any[] | undefined
   columns: {
     header: string
@@ -8,10 +9,15 @@ export interface TableProps {
   }[]
 }
 
-export function Table({ data = [], columns = [] }: TableProps) {
+export function Table({ data = [], columns = [], onClickRow }: TableProps) {
   const headers = columns.map((column) => <th>{column.header}</th>)
   const rows = data.map((item) => (
-    <tr key={item.name}>
+    <tr
+      key={item.name}
+      onClick={() => {
+        onClickRow(item)
+      }}
+    >
       {columns.map((column) => (
         <td>{item[column.key]}</td>
       ))}

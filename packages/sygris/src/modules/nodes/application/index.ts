@@ -1,7 +1,7 @@
 import { NodesService } from './NodesService';
-import { getNodes, createNode } from './useCases';
+import { getNodes, createNode, deleteNode } from './useCases';
 
-const nodesService = new NodesService(getNodes, createNode);
+const nodesService = new NodesService(getNodes, createNode, deleteNode);
 
 export { nodesService, NodesService };
 

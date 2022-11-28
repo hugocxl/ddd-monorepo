@@ -4,6 +4,9 @@ import {
   CreateNode,
   CreateNodeRequest,
   CreateNodeResponse,
+  DeleteNode,
+  DeleteNodeRequest,
+  DeleteNodeResponse,
   GetNodes,
   GetNodesRequest,
   GetNodesResponse,
@@ -13,9 +16,11 @@ export class NodesService {
   constructor(
     private readonly getNodes: GetNodes,
     private readonly createNode: CreateNode,
+    private readonly deleteNode: DeleteNode,
   ) {
     this.getNodes = getNodes;
     this.createNode = createNode;
+    this.deleteNode = deleteNode;
   }
 
   async getAll(req: GetNodesRequest): Promise<Nodes | GetNodesResponse> {
@@ -30,7 +35,7 @@ export class NodesService {
     return nodesOrError.getValue();
   }
 
-  async createNew(req: CreateNodeRequest): Promise<CreateNodeResponse> {
+  async create(req: CreateNodeRequest): Promise<CreateNodeResponse> {
     const nodeOrError: Result<CreateNodeResponse> =
       await this.createNode.execute(req);
 
@@ -39,5 +44,16 @@ export class NodesService {
     }
 
     return nodeOrError.getValue();
+  }
+
+  async delete(req: DeleteNodeRequest): Promise<DeleteNodeResponse> {
+    const nodeOrError: Result<DeleteNodeResponse> =
+      await this.deleteNode.execute(req);
+
+    if (nodeOrError.isFailure) {
+      return nodeOrError.getError() as DeleteNodeResponse;
+    }
+
+    return;
   }
 }
