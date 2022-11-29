@@ -18,6 +18,8 @@ The `@sygris/backend` app was not specified in the test but I wanted to simulate
 
 Regardless the client apps: the `@sygris/ui` package acts as a SDK to develop React apps. All shared elements between our clients is hosted in this package, allowing us to have them decoupled from specific client implentations. This includes hooks, components, themes, etc. 2 different apps have been included in the monorepo as an example: a desktop app (Web, Desktop - `@sygris/desktop`) and a mobile app (iOS, Android - `@sygris/mobile`).
 
+![clients](./public/clients.png)
+
 ## Main technologies used
 
 * [Rush](https://rushjs.io/): Scalable monorepo build orchestrator
@@ -66,6 +68,10 @@ rushx test # Run the tests
 
 # Additionally, some include specific scripts for their cases (see package.json)
 ```
+
+Remember that all projects can be run in parallel with static and dynamic serving.
+
+![clients](./public/dev.png)
 
 ## First-time instructions
 

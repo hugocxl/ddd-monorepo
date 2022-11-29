@@ -1,1 +1,1 @@
-# ddd-monorepo
+# @sygris/backend

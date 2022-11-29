@@ -1,1 +1,1 @@
-# sygris React SDK
+# @sygris/ui

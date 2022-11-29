@@ -1,3 +1,3 @@
-export * from './config'
-export * from './modules'
-export * from './shared'
+export * from './config';
+export * from './modules';
+export * from './shared';
