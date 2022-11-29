@@ -15,10 +15,11 @@ export function CreateNodeCard({
   onChange,
 }: CreateNodeCardProps) {
   return (
-    <BoxCard title={'Create Node'}>
+    <BoxCard title={'Create Node'} data-test={'create-node-card'}>
       <Stack justify={'center'}>
         <Input.Wrapper label={'Name'}>
           <Input
+            data-test={'input-name'}
             type={'text'}
             onChange={onChange}
             placeholder='Enter node name...'
@@ -29,6 +30,7 @@ export function CreateNodeCard({
         </Input.Wrapper>
         <Input.Wrapper label={'Parent ID'}>
           <Input
+            data-test={'input-parent-id'}
             type={'number'}
             onChange={onChange}
             placeholder='Enter node parent id...'
@@ -37,7 +39,7 @@ export function CreateNodeCard({
             value={parentId}
           />
         </Input.Wrapper>
-        <Button variant='filled' onClick={onClick}>
+        <Button data-test={'button'} variant='filled' onClick={onClick}>
           Create node
         </Button>
       </Stack>

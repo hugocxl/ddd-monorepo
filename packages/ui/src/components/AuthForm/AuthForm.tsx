@@ -3,6 +3,11 @@ import { UserEmail, UserPassword } from '@sygris/core'
 import { IconAt, IconLock } from '@tabler/icons'
 import { SygrisText } from '../SygrisText'
 
+const FORM_DATA_TEXT = 'form'
+const BUTTON_DATA_TEXT = 'button'
+const INPUT_NAME_DATA_TEXT = 'input-name'
+const INPUT_PASSWORD_DATA_TEXT = 'input-password'
+
 export interface AuthFormProps {
   email: UserEmail
   password: UserPassword
@@ -64,6 +69,7 @@ export function AuthForm({
 
   return (
     <Card
+      data-test={FORM_DATA_TEXT}
       component={'form'}
       onSubmit={onSubmit}
       p={'xl'}
@@ -73,14 +79,21 @@ export function AuthForm({
     >
       <Stack align={'center'} justify={'center'}>
         <SygrisText mb={'xl'} />
-        <Input {...getInputProps('email')} variant={'filled'} value={email} />
+        <Input
+          {...getInputProps('email')}
+          data-test={INPUT_NAME_DATA_TEXT}
+          variant={'filled'}
+          value={email}
+        />
         <Input
           {...getInputProps('password')}
+          data-test={INPUT_PASSWORD_DATA_TEXT}
           icon={<IconLock size={16} />}
           variant={'filled'}
           value={password}
         />
         <Button
+          data-test={BUTTON_DATA_TEXT}
           fullWidth
           type={'submit'}
           variant={'filled'}

@@ -26,9 +26,10 @@ export function EditNodeCard({
     }
 
     return (
-      <Stack justify={'center'}>
+      <Stack justify={'center'} data-test={'edit-node-card'}>
         <Input.Wrapper label={'Name'}>
           <Input
+            data-test={'input-name'}
             onChange={onChange}
             placeholder='Enter node name...'
             variant={'filled'}
@@ -38,6 +39,7 @@ export function EditNodeCard({
         </Input.Wrapper>
         <Input.Wrapper label={'Parent ID'}>
           <Input
+            data-test={'input-parent-id'}
             type={'number'}
             onChange={onChange}
             placeholder='Enter node parent id...'
@@ -46,7 +48,7 @@ export function EditNodeCard({
             value={parentId}
           />
         </Input.Wrapper>
-        <Button variant='filled' onClick={onClick}>
+        <Button data-test={'button'} variant='filled' onClick={onClick}>
           Edit node
         </Button>
       </Stack>

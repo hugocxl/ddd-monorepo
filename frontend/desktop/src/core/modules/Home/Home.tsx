@@ -98,6 +98,7 @@ const Home: NextPage = () => {
     return (
       <Group spacing={'xs'}>
         <ActionIcon
+          data-test={'edit-node-button'}
           onClick={() => onSelectNode(row)}
           size={'md'}
           variant={'default'}
@@ -105,6 +106,7 @@ const Home: NextPage = () => {
           <IconPencil size={16} />
         </ActionIcon>
         <ActionIcon
+          data-test={'delete-node-button'}
           onClick={() => onDeleteNode(row)}
           size={'md'}
           variant={'default'}

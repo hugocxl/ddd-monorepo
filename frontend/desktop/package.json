@@ -7,8 +7,10 @@
     "dev": "next dev",
     "serve": "rushx build && next start",
     "build": "next build && next export",
-    "test": "",
-    "package": "yarn tauri build"
+    "test": "rushx cypress:run",
+    "package": "yarn tauri build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@sygris/core": "workspace:*",
@@ -21,6 +23,7 @@
     "@types/node": "^18.11.9",
     "@types/react-dom": "^18.0.9",
     "@types/react": "^18.0.25",
+    "cypress": "^11.2.0",
     "eslint-config-next": "^13.0.5",
     "eslint": "^8.19.0",
     "next": "^13.0.5",

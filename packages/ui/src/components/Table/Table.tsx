@@ -50,7 +50,14 @@ export function Table({ data = [], columns = [], ...rest }: TableProps) {
   })
 
   return (
-    <MnTable h={'100%'} mb={0} withColumnBorders striped highlightOnHover>
+    <MnTable
+      data-test={'table'}
+      h={'100%'}
+      mb={0}
+      withColumnBorders
+      striped
+      highlightOnHover
+    >
       {/* <Box component='thead' sx={{ display: 'block' }}>
         {headers}
       </Box> */}
