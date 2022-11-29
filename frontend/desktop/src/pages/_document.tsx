@@ -1,15 +1,11 @@
 // Dependencies
 import * as React from 'react'
-import { createGetInitialProps } from '@sygris/ui'
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
 
 // Constants
 const DOCUMENT_TITLE = '@Sygris'
 
-const getInitialProps = createGetInitialProps()
 class Document extends NextDocument {
-  static getInitialProps = getInitialProps
-
   render() {
     return (
       <Html lang='en'>
