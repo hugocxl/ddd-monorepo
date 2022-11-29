@@ -12,6 +12,7 @@ interface AuthState {
 interface AuthUtils {
   signUp: (user: UserSignUpDTO) => Promise<void>
   signIn: (user: UserSignInDTO) => Promise<void>
+  signOut: () => void
 }
 
 const BASE_API = 'http://localhost:8000'
@@ -65,6 +66,11 @@ export function useAuth(): [AuthState, AuthUtils] {
     createCaller<UserSignInDTO>(`${BASE_API}/users/signin`),
     []
   )
+  const signOut = () => {
+    state.user = null
+    state.isLogged = false
+    state.error = null
+  }
 
-  return [stateSnap, { signUp, signIn }]
+  return [stateSnap, { signUp, signIn, signOut }]
 }

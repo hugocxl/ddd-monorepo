@@ -15,9 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <SygrisProvider>
-      <AppShell>
-        <Component {...pageProps} />
-      </AppShell>
+      <Component {...pageProps} />
     </SygrisProvider>
   )
 }

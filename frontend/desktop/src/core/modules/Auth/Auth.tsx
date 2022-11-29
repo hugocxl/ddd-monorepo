@@ -2,33 +2,11 @@ import { UserSignUpDTO } from '@sygris/core'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { NextPage } from 'next'
-import {
-  Stack,
-  useAuth,
-  IconAlertCircle,
-  IconLock,
-  Alert,
-  Button,
-  Title,
-  Input,
-  IconAt,
-  Box,
-  Text,
-} from '@sygris/ui'
-
-function getInputProps(name: string) {
-  return {
-    sx: { width: '100%' },
-    type: name,
-    name,
-    icon: <IconAt size={16} />,
-    placeholder: `Enter your ${name}...`,
-  }
-}
+import { useAuth, Box, AuthForm } from '@sygris/ui'
 
 const Auth: NextPage = () => {
-  const [view, setView] = useState<'Sign in' | 'Sign up'>('Sign in')
-  const [{ isLoading, error, user, isLogged }, { signUp, signIn }] = useAuth()
+  const [view, setView] = useState<'signin' | 'signup'>('signin')
+  const [{ isLoading, error, isLogged }, { signUp, signIn }] = useAuth()
   const router = useRouter()
   const [form, setForm] = useState<UserSignUpDTO>({
     email: '',
@@ -46,12 +24,12 @@ const Auth: NextPage = () => {
   }
 
   function onChangeView() {
-    setView(view === 'Sign in' ? 'Sign up' : 'Sign in')
+    setView(view === 'signin' ? 'signup' : 'signin')
   }
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (view !== 'Sign in') {
+    if (view !== 'signin') {
       signUp(form)
     } else {
       signIn(form)
@@ -59,77 +37,16 @@ const Auth: NextPage = () => {
   }
 
   return (
-    <Box
-      component={'form'}
-      onSubmit={onSubmit}
-      h={'100%'}
-      w={'100%'}
-      display={'grid'}
-      sx={{ placeItems: 'center' }}
-    >
-      <Stack align={'center'} w={'280px'} justify={'center'}>
-        <Title order={2}>{`Welcome to Sygris`}</Title>
-
-        <Input
-          {...getInputProps('email')}
-          onChange={onChangeInput}
-          value={form.email}
-        />
-        <Input
-          {...getInputProps('password')}
-          icon={<IconLock size={16} />}
-          onChange={onChangeInput}
-          value={form.password}
-        />
-        <Button
-          fullWidth
-          type={'submit'}
-          variant={'filled'}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Loading...' : view}
-        </Button>
-
-        <Text size={'xs'} color={'dimmed'}>
-          {view === 'Sign in' ? (
-            <>
-              Don’t have an account?{' '}
-              <Text span variant='link' onClick={onChangeView}>
-                Sign up
-              </Text>
-            </>
-          ) : (
-            <>
-              Have an account already?{' '}
-              <Text span variant='link' onClick={onChangeView}>
-                Sign in
-              </Text>
-            </>
-          )}
-        </Text>
-
-        {error && (
-          <Alert
-            w={'100%'}
-            icon={<IconAlertCircle size={16} />}
-            title='Error'
-            color='red'
-          >
-            {error}
-          </Alert>
-        )}
-
-        {user && (
-          <Alert
-            w={'100%'}
-            icon={<IconAlertCircle size={16} />}
-            title='Success'
-            color='green'
-          >
-            {JSON.stringify(user)}
-          </Alert>
-        )}
-      </Stack>
+    <Box h={'100vh'} w={'100%'} display={'grid'} sx={{ placeItems: 'center' }}>
+      <AuthForm
+        {...form}
+        onChangeInput={onChangeInput}
+        onChangeView={onChangeView}
+        onSubmit={onSubmit}
+        view={view}
+        error={Boolean(error)}
+        isLoading={isLoading}
+      />
     </Box>
   )
 }
